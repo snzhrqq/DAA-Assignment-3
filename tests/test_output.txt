@@ -1,0 +1,87 @@
+== A. boundary cases, batch sent twice in one process ==
+PASS run1 dsu empty
+PASS run1 dsu self and repeated unions
+PASS run1 dsu mixed
+PASS run1 dsu README example
+PASS run1 kruskal empty
+PASS run1 prim isolates only
+PASS run1 kruskal loops parallel negative
+PASS run1 prim loops parallel negative
+PASS run1 kruskal 64-bit total
+PASS run1 prim restart in every component
+PASS run1 kruskal equal weights
+PASS run1 scc empty
+PASS run1 scc isolates
+PASS run1 scc self-loop and duplicates
+PASS run1 scc chain of cycles
+PASS run1 topo empty
+PASS run1 topo isolates
+PASS run1 topo self-loop
+PASS run1 topo cycle in another component
+PASS run1 topo diamond with duplicate
+PASS run1 dag singleton
+PASS run1 dag unreachable and distance -1
+PASS run1 dag cycle unreachable from source
+PASS run1 dag tied and parallel edges
+PASS run1 dag negative 64-bit, source not 0
+PASS run1 dag README example
+PASS run2 dsu empty
+PASS run2 dsu self and repeated unions
+PASS run2 dsu mixed
+PASS run2 dsu README example
+PASS run2 kruskal empty
+PASS run2 prim isolates only
+PASS run2 kruskal loops parallel negative
+PASS run2 prim loops parallel negative
+PASS run2 kruskal 64-bit total
+PASS run2 prim restart in every component
+PASS run2 kruskal equal weights
+PASS run2 scc empty
+PASS run2 scc isolates
+PASS run2 scc self-loop and duplicates
+PASS run2 scc chain of cycles
+PASS run2 topo empty
+PASS run2 topo isolates
+PASS run2 topo self-loop
+PASS run2 topo cycle in another component
+PASS run2 topo diamond with duplicate
+PASS run2 dag singleton
+PASS run2 dag unreachable and distance -1
+PASS run2 dag cycle unreachable from source
+PASS run2 dag tied and parallel edges
+PASS run2 dag negative 64-bit, source not 0
+PASS run2 dag README example
+PASS state reset: both runs give identical outputs
+== B. validator: alternative valid answers / invalid witnesses ==
+PASS forest: alternative tied edge id4 accepted
+PASS forest: self-loop / too many edges rejected
+PASS forest: valid tree but not optimal rejected
+PASS scc: other labels and pair order accepted
+PASS scc: duplicate condensation pair rejected
+PASS scc: merged non-strongly-connected vertices rejected
+PASS topo: alternative order accepted
+PASS topo: backward edge rejected
+PASS dag: other parallel edge (id1) and other tied route (id4) accepted
+PASS dag: parent edge that does not end at the vertex rejected
+PASS dag: wrong distance rejected
+== C. route helper reconstruct_route (direct calls) ==
+   reconstruct_route(target=3) -> [0, 1, 2, 3]; edge ids [0, 2, 3]; weight 0
+PASS reachable target 3: route [0,1,2,3], ids [0,2,3], weight 0 = distance
+   reconstruct_route(target=0) -> [0]; edge ids []; weight 0
+PASS source target: [0]
+   reconstruct_route(target=4) -> None; edge ids []; weight 0
+PASS unreachable target 4: None (documented no-route value)
+   reconstruct_route(target=3) -> [0, 2, 3]; edge ids [2, 4]; weight 3
+PASS tied/parallel edges: route goes source->target along chosen edges, weight 3
+== D. full limits and deep chains (seed 2026) ==
+PASS dsu n=1e5 q=2.5e5: 0.49 s (limit 20 s)
+PASS kruskal n=1e5 m=2.5e5: 0.78 s (limit 20 s)
+PASS prim n=1e5 m=2.5e5: 1.54 s (limit 20 s)
+PASS scc deep chain + back edge (1 SCC): 0.21 s (limit 20 s)
+PASS scc deep chain (n SCCs): 0.32 s (limit 20 s)
+PASS topo deep chain: 0.12 s (limit 20 s)
+PASS topo random DAG m=2.5e5: 0.39 s (limit 20 s)
+PASS dag deep chain weights -1e9: 0.21 s (limit 20 s)
+PASS dag random m=2.5e5 + unreachable cycle: 0.22 s (limit 20 s)
+
+ALL TESTS PASSED

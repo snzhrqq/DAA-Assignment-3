@@ -1,0 +1,26 @@
+{"name":"dsu empty","actual":{"states":[]}}
+{"name":"dsu self and repeated unions","actual":{"states":[[1,1],[1,1]]}}
+{"name":"dsu mixed","actual":{"states":[[4,2],[3,2],[3,2],[2,4],[2,4],[1,5]]}}
+{"name":"dsu README example","actual":{"states":[[3,2],[2,3],[2,3],[2,3]]}}
+{"name":"kruskal empty","actual":{"cost":0,"edge_ids":[],"components":0}}
+{"name":"prim isolates only","actual":{"cost":0,"edge_ids":[],"components":3}}
+{"name":"kruskal loops parallel negative","actual":{"cost":5,"edge_ids":[2,3],"components":1}}
+{"name":"prim loops parallel negative","actual":{"cost":5,"edge_ids":[2,3],"components":1}}
+{"name":"kruskal 64-bit total","actual":{"cost":3000000000,"edge_ids":[0,1,2],"components":1}}
+{"name":"prim restart in every component","actual":{"cost":-2,"edge_ids":[2,1,3],"components":3}}
+{"name":"kruskal equal weights","actual":{"cost":3,"edge_ids":[0,1,2],"components":1}}
+{"name":"scc empty","actual":{"component":[],"condensation":[]}}
+{"name":"scc isolates","actual":{"component":[2,1,0],"condensation":[]}}
+{"name":"scc self-loop and duplicates","actual":{"component":[0,1,1],"condensation":[[0,1]]}}
+{"name":"scc chain of cycles","actual":{"component":[0,0,0,1,1,2],"condensation":[[0,1],[1,2]]}}
+{"name":"topo empty","actual":{"acyclic":true,"order":[]}}
+{"name":"topo isolates","actual":{"acyclic":true,"order":[3,2,1,0]}}
+{"name":"topo self-loop","actual":{"acyclic":false,"order":[]}}
+{"name":"topo cycle in another component","actual":{"acyclic":false,"order":[]}}
+{"name":"topo diamond with duplicate","actual":{"acyclic":true,"order":[0,2,1,3]}}
+{"name":"dag singleton","actual":{"acyclic":true,"distance":[0],"parent_edge":[-1]}}
+{"name":"dag unreachable and distance -1","actual":{"acyclic":true,"distance":[0,-1,null,null],"parent_edge":[-1,0,-1,-1]}}
+{"name":"dag cycle unreachable from source","actual":{"acyclic":false,"distance":[],"parent_edge":[]}}
+{"name":"dag tied and parallel edges","actual":{"acyclic":true,"distance":[0,2,1,3],"parent_edge":[-1,0,2,4]}}
+{"name":"dag negative 64-bit, source not 0","actual":{"acyclic":true,"distance":[null,0,-1000000000,-2000000000],"parent_edge":[-1,-1,0,1]}}
+{"name":"dag README example","actual":{"acyclic":true,"distance":[0,3,-4,0,null],"parent_edge":[-1,0,2,3,-1]}}
